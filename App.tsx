@@ -1,20 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, StatusBar } from 'react-native'
+import { ThemeProvider } from 'styled-components';
+
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold
+} from '@expo-google-fonts/poppins'
+
+import theme from './src/global/styles/theme'
+import { Routes } from './src/routes';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold
+  })
+
+  if (!fontsLoaded) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Carregando</Text>
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={theme}>
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor="transparent"
+        translucent
+      />
+      <Routes />
+    </ThemeProvider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center'
   },
-});
+  title: {
+    fontSize: 20
+  }
+})
+
+
