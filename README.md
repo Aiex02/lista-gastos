@@ -1,4 +1,4 @@
-Meu Aplicativo React Native com Expo Go
+*Meu Aplicativo React Native com Expo Go*
 Bem-vindo ao Meu Aplicativo React Native! Esta aplicação foi desenvolvida utilizando React Native e gerenciada pelo Expo.
 
 Instalação e Execução
